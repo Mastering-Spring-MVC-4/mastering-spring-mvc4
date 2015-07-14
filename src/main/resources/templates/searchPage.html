@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/default">
+<head lang="en">
+    <title>Search</title>
+</head>
+<body>
+
+<div class="row" layout:fragment="content">
+
+    <h4 class="indigo-text center">Please enter a search term</h4>
+
+    <div class="col s6 offset-s3">
+        <div id="errorMessage" class="card-panel red lighten-2" th:if="${error}">
+            <span class="card-title" th:text="${error}"></span>
+        </div>
+
+        <form action="/postSearch" method="post" class="col s12">
+            <div class="row center">
+                <div class="input-field">
+                    <i class="mdi-action-search prefix"></i>
+                    <input id="search" name="search" type="text" class="validate"/>
+                    <label for="search">Search</label>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

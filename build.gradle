@@ -28,12 +28,16 @@ repositories {
     mavenCentral()
 }
 
-
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web")
-    testCompile("org.springframework.boot:spring-boot-starter-test") 
-}
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    compile 'org.springframework.boot:spring-boot-starter-social-twitter'
 
+    compile 'org.webjars:materializecss:0.96.0'
+    compile 'org.webjars:jquery:2.1.4'
+
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+}
 
 eclipse {
     classpath {
