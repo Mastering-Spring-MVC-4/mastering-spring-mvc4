@@ -10,21 +10,21 @@
 
     <h2 class="indigo-text center">Personal info</h2>
 
-    <form th:action="@{/profile}" method="post" class="col m8 s12 offset-m2">
+    <form th:action="@{/profile}" th:object="${profileForm}" method="post" class="col m8 s12 offset-m2">
 
         <div class="row">
             <div class="input-field col s6">
-                <input id="twitterHandle" type="text"/>
+                <input th:field="${profileForm.twitterHandle}" id="twitterHandle" type="text"/>
                 <label for="twitterHandle">Last Name</label>
             </div>
             <div class="input-field col s6">
-                <input id="email" type="text"/>
+                <input th:field="${profileForm.email}" id="email" type="text"/>
                 <label for="email">Email</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s6">
-                <input id="birthDate" type="text"/>
+                <input th:field="${profileForm.birthDate}" id="birthDate" type="text"/>
                 <label for="birthDate">Birth Date</label>
             </div>
         </div>
