@@ -24,7 +24,7 @@
         </div>
         <div class="row">
             <div class="input-field col s6">
-                <input th:field="${profileForm.birthDate}" id="birthDate" type="text"/>
+                <input th:field="${profileForm.birthDate}" id="birthDate" type="text" th:placeholder="${dateFormat}"/>
                 <label for="birthDate">Birth Date</label>
             </div>
         </div>
