@@ -14,13 +14,15 @@
 
         <div class="row">
             <div class="input-field col s6">
-                <input th:field="${profileForm.twitterHandle}" id="twitterHandle" type="text" th:errorclass="invalid"/>
+                <input th:field="${profileForm.twitterHandle}" id="twitterHandle" type="text" th:errorclass="invalid"
+                       required="required"/>
                 <label for="twitterHandle" th:text="#{twitter.handle}">Twitter handle</label>
 
                 <div th:errors="*{twitterHandle}" class="red-text">Error</div>
             </div>
             <div class="input-field col s6">
-                <input th:field="${profileForm.email}" id="email" type="text" th:errorclass="invalid"/>
+                <input th:field="${profileForm.email}" id="email" type="email" th:errorclass="invalid"
+                       required="required"/>
                 <label for="email" th:text="#{email}">Email</label>
 
                 <div th:errors="*{email}" class="red-text">Error</div>
@@ -29,6 +31,7 @@
         <div class="row">
             <div class="input-field col s6">
                 <input th:field="${profileForm.birthDate}" id="birthDate" type="text" th:errorclass="invalid"
+                       required="required"
                        th:placeholder="${dateFormat}"/>
                 <label for="birthDate" th:text="#{birthdate}">Birth Date</label>
 
@@ -47,7 +50,7 @@
             <div class="row" th:each="row,rowStat : *{tastes}">
                 <div class="col s6">
                     <input type="text" th:field="*{tastes[__${rowStat.index}__]}"
-                           th:placeholder="#{taste.placeholder}"/>
+                           th:placeholder="#{taste.placeholder}" required="required"/>
                 </div>
 
                 <div class="col s6">
@@ -66,5 +69,14 @@
         </div>
     </form>
 </div>
+<script layout:fragment="script">
+    $('button').bind('click', function (e) {
+        if (e.currentTarget.name === 'save') {
+            $(e.currentTarget.form).removeAttr('novalidate');
+        } else {
+            $(e.currentTarget.form).attr('novalidate', 'novalidate');
+        }
+    });
+</script>
 </body>
 </html>
