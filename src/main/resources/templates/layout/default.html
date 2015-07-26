@@ -11,11 +11,29 @@
 </head>
 <body>
 
+<ul id="lang-dropdown" class="dropdown-content">
+    <li><a href="?lang=en_US">English</a></li>
+    <li><a href="?lang=fr">French</a></li>
+</ul>
+<nav>
+    <div class="nav-wrapper indigo">
+        <ul class="right">
+            <li><a class="dropdown-button" href="#!" data-activates="lang-dropdown"><i
+                    class="mdi-action-language right"></i> Lang</a></li>
+        </ul>
+    </div>
+</nav>
+
 <section layout:fragment="content">
     <p>Page content goes here</p>
 </section>
 
 <script src="/webjars/jquery/2.1.4/jquery.js"></script>
 <script src="/webjars/materializecss/0.96.0/js/materialize.js"></script>
+<script type="text/javascript">
+    $(".dropdown-button").dropdown();
+</script>
+<script type="text/javascript" layout:fragment="script">
+</script>
 </body>
 </html>
