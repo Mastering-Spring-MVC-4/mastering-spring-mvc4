@@ -12,28 +12,31 @@
 
     <form th:action="@{/profile}" th:object="${profileForm}" method="post" class="col m8 s12 offset-m2">
 
-        <ul th:if="${#fields.hasErrors('*')}" class="errorlist">
-            <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li>
-        </ul>
-
         <div class="row">
             <div class="input-field col s6">
-                <input th:field="${profileForm.twitterHandle}" id="twitterHandle" type="text"/>
-                <label for="twitterHandle">Last Name</label>
+                <input th:field="${profileForm.twitterHandle}" id="twitterHandle" type="text" th:errorclass="invalid"/>
+                <label for="twitterHandle">Twitter handle</label>
+
+                <div th:errors="*{twitterHandle}" class="red-text">Error</div>
             </div>
             <div class="input-field col s6">
-                <input th:field="${profileForm.email}" id="email" type="text"/>
+                <input th:field="${profileForm.email}" id="email" type="text" th:errorclass="invalid"/>
                 <label for="email">Email</label>
+
+                <div th:errors="*{email}" class="red-text">Error</div>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s6">
-                <input th:field="${profileForm.birthDate}" id="birthDate" type="text" th:placeholder="${dateFormat}"/>
+                <input th:field="${profileForm.birthDate}" id="birthDate" type="text" class="datepicker"
+                       th:errorclass="invalid" th:placeholder="${dateFormat}"/>
                 <label for="birthDate">Birth Date</label>
+
+                <div th:errors="*{birthDate}" class="red-text">Error</div>
             </div>
         </div>
         <div class="row s12">
-            <button class="btn waves-effect waves-light" type="submit" name="save">Submit
+            <button class="btn indigo waves-effect waves-light" type="submit" name="save">Submit
                 <i class="mdi-content-send right"></i>
             </button>
         </div>
