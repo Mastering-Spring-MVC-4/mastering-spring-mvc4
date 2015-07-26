@@ -8,35 +8,35 @@
 <body>
 <div class="row" layout:fragment="content">
 
-    <h2 class="indigo-text center">Personal info</h2>
+    <h2 class="indigo-text center" th:text="#{profile.title}">Personal info</h2>
 
     <form th:action="@{/profile}" th:object="${profileForm}" method="post" class="col m8 s12 offset-m2">
 
         <div class="row">
             <div class="input-field col s6">
                 <input th:field="${profileForm.twitterHandle}" id="twitterHandle" type="text" th:errorclass="invalid"/>
-                <label for="twitterHandle">Twitter handle</label>
+                <label for="twitterHandle" th:text="#{twitter.handle}">Twitter handle</label>
 
                 <div th:errors="*{twitterHandle}" class="red-text">Error</div>
             </div>
             <div class="input-field col s6">
                 <input th:field="${profileForm.email}" id="email" type="text" th:errorclass="invalid"/>
-                <label for="email">Email</label>
+                <label for="email" th:text="#{email}">Email</label>
 
                 <div th:errors="*{email}" class="red-text">Error</div>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s6">
-                <input th:field="${profileForm.birthDate}" id="birthDate" type="text" class="datepicker"
-                       th:errorclass="invalid" th:placeholder="${dateFormat}"/>
-                <label for="birthDate">Birth Date</label>
+                <input th:field="${profileForm.birthDate}" id="birthDate" type="text" th:errorclass="invalid"
+                       th:placeholder="${dateFormat}"/>
+                <label for="birthDate" th:text="#{birthdate}">Birth Date</label>
 
                 <div th:errors="*{birthDate}" class="red-text">Error</div>
             </div>
         </div>
-        <div class="row s12">
-            <button class="btn indigo waves-effect waves-light" type="submit" name="save">Submit
+        <div class="row s12 center">
+            <button class="btn indigo waves-effect waves-light" type="submit" name="save" th:text="#{submit}">Submit
                 <i class="mdi-content-send right"></i>
             </button>
         </div>
