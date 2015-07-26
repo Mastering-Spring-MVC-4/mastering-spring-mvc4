@@ -12,6 +12,10 @@
 
     <form th:action="@{/profile}" th:object="${profileForm}" method="post" class="col m8 s12 offset-m2">
 
+        <ul th:if="${#fields.hasErrors('*')}" class="errorlist">
+            <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li>
+        </ul>
+
         <div class="row">
             <div class="input-field col s6">
                 <input th:field="${profileForm.twitterHandle}" id="twitterHandle" type="text"/>
