@@ -10,6 +10,10 @@
 
     <h2 class="indigo-text center">Upload</h2>
 
+    <div class="col s12 center red-text" th:text="${error}" th:if="${error}">
+        Error during upload
+    </div>
+
     <form th:action="@{/upload}" method="post" enctype="multipart/form-data" class="col m8 s12 offset-m2">
 
         <div class="input-field col s6">
