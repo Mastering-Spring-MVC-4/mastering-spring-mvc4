@@ -1,6 +1,7 @@
 package masterSpringMvc.profile;
 
 import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
@@ -9,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.net.URLConnection;
 
 @Controller
 public class PictureUploadController {
@@ -18,6 +21,13 @@ public class PictureUploadController {
     @RequestMapping("upload")
     public String uploadPage() {
         return "profile/uploadPage";
+    }
+
+    @RequestMapping(value = "/uploadedPicture")
+    public void getUploadedPicture(HttpServletResponse response) throws IOException {
+        ClassPathResource classPathResource = new ClassPathResource("/images/anonymous.png");
+        response.setHeader("Content-Type", URLConnection.guessContentTypeFromName(classPathResource.getFilename()));
+        IOUtils.copy(classPathResource.getInputStream(), response.getOutputStream());
     }
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
