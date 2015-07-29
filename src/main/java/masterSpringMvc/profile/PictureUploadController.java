@@ -1,7 +1,8 @@
 package masterSpringMvc.profile;
 
+import masterSpringMvc.config.PictureUploadProperties;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
-import org.springframework.core.io.ClassPathResource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
@@ -16,7 +17,14 @@ import java.net.URLConnection;
 
 @Controller
 public class PictureUploadController {
-    public static final Resource PICTURES_DIR = new FileSystemResource("./pictures");
+    private final Resource picturesDir;
+    private final Resource anonymousPicture;
+
+    @Autowired
+    public PictureUploadController(PictureUploadProperties uploadProperties) {
+        picturesDir = uploadProperties.getUploadPath();
+        anonymousPicture = uploadProperties.getAnonymousPicture();
+    }
 
     @RequestMapping("upload")
     public String uploadPage() {
@@ -25,9 +33,8 @@ public class PictureUploadController {
 
     @RequestMapping(value = "/uploadedPicture")
     public void getUploadedPicture(HttpServletResponse response) throws IOException {
-        ClassPathResource classPathResource = new ClassPathResource("/images/anonymous.png");
-        response.setHeader("Content-Type", URLConnection.guessContentTypeFromName(classPathResource.getFilename()));
-        IOUtils.copy(classPathResource.getInputStream(), response.getOutputStream());
+        response.setHeader("Content-Type", URLConnection.guessContentTypeFromName(anonymousPicture.getFilename()));
+        IOUtils.copy(anonymousPicture.getInputStream(), response.getOutputStream());
     }
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
@@ -45,7 +52,7 @@ public class PictureUploadController {
 
     private Resource copyFileToPictures(MultipartFile file) throws IOException {
         String fileExtension = getFileExtension(file.getOriginalFilename());
-        File tempFile = File.createTempFile("pic", fileExtension, PICTURES_DIR.getFile());
+        File tempFile = File.createTempFile("pic", fileExtension, picturesDir.getFile());
         try (InputStream in = file.getInputStream();
              OutputStream out = new FileOutputStream(tempFile)) {
 
