@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.util.WebUtils;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.net.URLConnection;
@@ -76,6 +78,13 @@ public class PictureUploadController {
     public ModelAndView handleIOException(IOException exception) {
         ModelAndView modelAndView = new ModelAndView("profile/uploadPage");
         modelAndView.addObject("error", exception.getMessage());
+        return modelAndView;
+    }
+
+    @RequestMapping("uploadError")
+    public ModelAndView onUploadError(HttpServletRequest request) {
+        ModelAndView modelAndView = new ModelAndView("profile/uploadPage");
+        modelAndView.addObject("error", request.getAttribute(WebUtils.ERROR_MESSAGE_ATTRIBUTE));
         return modelAndView;
     }
 
