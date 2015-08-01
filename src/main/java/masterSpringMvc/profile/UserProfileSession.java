@@ -45,4 +45,8 @@ public class UserProfileSession implements Serializable {
     public Resource getPicturePath() {
         return picturePath == null ? null : new UrlResource(picturePath);
     }
+
+    public List<String> getTastes() {
+        return tastes;
+    }
 }
