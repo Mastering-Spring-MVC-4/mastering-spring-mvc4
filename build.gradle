@@ -35,6 +35,9 @@ dependencies {
 
     compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
 
+    compile 'io.springfox:springfox-swagger2:2.1.2'
+    compile 'io.springfox:springfox-swagger-ui:2.1.2'
+
     compile 'org.webjars:materializecss:0.96.0'
     compile 'org.webjars:jquery:2.1.4'
 
