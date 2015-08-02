@@ -33,6 +33,8 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
     compile 'org.springframework.boot:spring-boot-starter-social-twitter'
 
+    compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+
     compile 'org.webjars:materializecss:0.96.0'
     compile 'org.webjars:jquery:2.1.4'
 
