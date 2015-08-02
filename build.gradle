@@ -42,6 +42,9 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-security'
     compile 'org.thymeleaf.extras:thymeleaf-extras-springsecurity3'
 
+    compile 'org.springframework.boot:spring-boot-starter-redis'
+    compile 'org.springframework.session:spring-session:1.0.1.RELEASE'
+
     compile 'org.webjars:materializecss:0.96.0'
     compile 'org.webjars:jquery:2.1.4'
 
