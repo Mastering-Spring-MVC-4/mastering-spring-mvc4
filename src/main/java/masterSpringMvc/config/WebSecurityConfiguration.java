@@ -11,6 +11,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .formLogin()
+                .loginPage("/login")
                 .defaultSuccessUrl("/profile")
                 .and()
                 .logout().logoutSuccessUrl("/login")
