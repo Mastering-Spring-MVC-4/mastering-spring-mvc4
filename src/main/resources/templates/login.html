@@ -36,6 +36,14 @@
                 </div>
                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
             </form>
+
+            <form th:action="@{/signin/twitter}" method="POST" class="center">
+                <div class="row">
+                    <button class="btn indigo" name="twitterSignin" type="submit">Connect with Twitter
+                        <i class="mdi-social-group-add left"></i>
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
