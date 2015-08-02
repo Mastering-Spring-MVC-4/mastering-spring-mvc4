@@ -40,6 +40,7 @@ dependencies {
     compile 'io.springfox:springfox-swagger-ui:2.1.2'
 
     compile 'org.springframework.boot:spring-boot-starter-security'
+    compile 'org.thymeleaf.extras:thymeleaf-extras-springsecurity3'
 
     compile 'org.webjars:materializecss:0.96.0'
     compile 'org.webjars:jquery:2.1.4'
