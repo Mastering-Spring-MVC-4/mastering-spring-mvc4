@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title th:text="${status}">404</title>
+
+    <link href="/webjars/materializecss/0.96.0/css/materialize.css" type="text/css" rel="stylesheet"
+          media="screen,projection"/>
+</head>
+<body>
+<div class="row">
+    <h1 class="indigo-text center" th:text="${error}">Not found</h1>
+
+    <p class="col s12 center" th:text="${message}">
+        This page is not available
+    </p>
+</div>
+</body>
+</html>
