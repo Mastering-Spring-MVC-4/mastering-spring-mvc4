@@ -1,6 +1,7 @@
 package masterSpringMvc.search;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.MatrixVariable;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +15,7 @@ public class SearchController {
     private TwitterSearch twitterSearch;
 
     @Autowired
-    public SearchController(TwitterSearch twitterSearch) {
+    public SearchController(@Qualifier("async") TwitterSearch twitterSearch) {
         this.twitterSearch = twitterSearch;
     }
 
