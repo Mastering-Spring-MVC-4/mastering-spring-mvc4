@@ -15,7 +15,7 @@ public class SearchController {
     private TwitterSearch twitterSearch;
 
     @Autowired
-    public SearchController(@Qualifier("async") TwitterSearch twitterSearch) {
+    public SearchController(TwitterSearch twitterSearch) {
         this.twitterSearch = twitterSearch;
     }
 

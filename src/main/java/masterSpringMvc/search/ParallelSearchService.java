@@ -4,6 +4,7 @@ import masterSpringMvc.search.cache.SearchCache;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.social.twitter.api.SearchParameters;
@@ -16,7 +17,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
-@Service("async")
+@Service
+@Profile("async")
 public class ParallelSearchService implements TwitterSearch {
     private final AsyncSearch asyncSearch;
 

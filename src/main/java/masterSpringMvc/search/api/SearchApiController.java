@@ -3,6 +3,7 @@ package masterSpringMvc.search.api;
 import masterSpringMvc.search.LightTweet;
 import masterSpringMvc.search.TwitterSearch;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
