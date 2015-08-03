@@ -39,7 +39,7 @@ public class UserApiController {
     @RequestMapping(value = "/user/{email}", method = RequestMethod.PUT)
     public ResponseEntity<User> updateUser(@PathVariable String email, @RequestBody User user) throws EntityNotFoundException {
         User saved = userRepository.update(email, user);
-        return new ResponseEntity<>(saved, HttpStatus.CREATED);
+        return new ResponseEntity<>(saved, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/user/{email}", method = RequestMethod.DELETE)
