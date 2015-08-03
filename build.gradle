@@ -68,6 +68,7 @@ dependencies {
 
     testCompile 'org.codehaus.groovy:groovy-all:2.4.4:indy'
     testCompile 'org.spockframework:spock-spring'
+    testCompile 'org.gebish:geb-spock:0.10.0'
 }
 
 eclipse {
