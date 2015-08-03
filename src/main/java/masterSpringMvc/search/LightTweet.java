@@ -3,11 +3,12 @@ package masterSpringMvc.search;
 import org.springframework.social.twitter.api.Tweet;
 import org.springframework.social.twitter.api.TwitterProfile;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 
-public class LightTweet {
+public class LightTweet implements Serializable {
     private String profileImageUrl;
     private String user;
     private String text;
