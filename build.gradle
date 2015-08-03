@@ -28,6 +28,16 @@ repositories {
     mavenCentral()
 }
 
+configurations {
+    testCompile {
+        exclude module: 'selenium-safari-driver'
+        exclude module: 'selenium-ie-driver'
+        //exclude module: 'selenium-firefox-driver'
+        exclude module: 'selenium-htmlunit-driver'
+        exclude module: 'selenium-chrome-driver'
+    }
+}
+
 dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
@@ -51,6 +61,10 @@ dependencies {
     testCompile 'org.springframework.boot:spring-boot-starter-test'
     testCompile 'com.jayway.jsonpath:json-path'
     testCompile 'org.assertj:assertj-core:3.0.0'
+
+    testCompile 'org.fluentlenium:fluentlenium-assertj:0.10.3'
+    testCompile 'com.codeborne:phantomjsdriver:1.2.1'
+    testCompile 'org.seleniumhq.selenium:selenium-java:2.45.0'
 }
 
 eclipse {
