@@ -12,6 +12,13 @@ import java.util.concurrent.ConcurrentHashMap;
 public class UserRepository {
     private final Map<String, User> userMap = new ConcurrentHashMap<>();
 
+    public void reset(User... users) {
+        userMap.clear();
+        for (User user : users) {
+            save(user);
+        }
+    }
+
     public User update(String email, User user) throws EntityNotFoundException {
         if (!exists(email)) {
             throw new EntityNotFoundException("User " + email + " cannot be found");
