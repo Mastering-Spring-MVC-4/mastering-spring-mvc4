@@ -16,9 +16,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import java.util.Arrays;
 
 import static org.hamcrest.Matchers.*;
-import static org.hamcrest.core.Is.is;
-import static org.mockito.Matchers.anyListOf;
-import static org.mockito.Matchers.anyString;
+import static org.mockito.Matchers.*;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -28,7 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebAppConfiguration
 public class SearchControllerMockTest {
     @Mock
-    private SearchService searchService;
+    private TwitterSearch twitterSearch;
 
     @InjectMocks
     private SearchController searchController;
@@ -47,7 +45,7 @@ public class SearchControllerMockTest {
     @Test
     public void should_search() throws Exception {
 
-        when(searchService.search(anyString(), anyListOf(String.class)))
+        when(twitterSearch.search(anyString(), anyListOf(String.class)))
                 .thenReturn(Arrays.asList(
                         new LightTweet("tweetText")
                 ));
@@ -59,6 +57,6 @@ public class SearchControllerMockTest {
                         hasProperty("text", is("tweetText"))
                 )));
 
-        verify(searchService, times(1)).search(anyString(), anyListOf(String.class));
+        verify(twitterSearch, times(1)).search(anyString(), anyListOf(String.class));
     }
 }
