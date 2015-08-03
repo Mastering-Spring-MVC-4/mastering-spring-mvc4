@@ -49,6 +49,7 @@ dependencies {
     compile 'org.webjars:jquery:2.1.4'
 
     testCompile 'org.springframework.boot:spring-boot-starter-test'
+    testCompile 'com.jayway.jsonpath:json-path'
 }
 
 eclipse {
