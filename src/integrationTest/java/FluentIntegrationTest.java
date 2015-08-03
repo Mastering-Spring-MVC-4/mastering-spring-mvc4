@@ -2,6 +2,7 @@ import masterSpringMvc.MasterSpringMvcApplication;
 import masterSpringMvc.auth.StubSocialSigninConfig;
 import masterSpringMvc.search.StubTwitterSearchConfig;
 import org.fluentlenium.adapter.FluentTest;
+import org.fluentlenium.core.annotation.Page;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -10,9 +11,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.WebIntegrationTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import pages.LoginPage;
+import pages.ProfilePage;
+import pages.SearchResultPage;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.fluentlenium.core.filter.FilterConstructor.withName;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = {
@@ -41,25 +44,29 @@ public class FluentIntegrationTest extends FluentTest {
         assertThat(findFirst("h2").getText()).isEqualTo("Login");
     }
 
+    @Page
+    private LoginPage loginPage;
+    @Page
+    private ProfilePage profilePage;
+    @Page
+    private SearchResultPage searchResultPage;
+
     @Test
     public void should_be_redirected_after_filling_form() {
         goTo("/");
-        assertThat(findFirst("h2").getText()).isEqualTo("Login");
+        loginPage.isAt();
 
-        find("button", withName("twitterSignin")).click();
-        assertThat(findFirst("h2").getText()).isEqualTo("Your profile");
+        loginPage.login();
+        profilePage.isAt();
 
-        fill("#twitterHandle").with("geowarin");
-        fill("#email").with("geowarin@mymail.com");
-        fill("#birthDate").with("03/19/1987");
+        profilePage.fillInfos("geowarin", "geowarin@mymail.com", "03/19/1987");
+        profilePage.addTaste("spring");
 
-        find("button", withName("addTaste")).click();
-        fill("#tastes0").with("spring");
-
-        find("button", withName("save")).click();
+        profilePage.saveProfile();
 
         takeScreenShot();
-        assertThat(findFirst("h2").getText()).isEqualTo("Tweet results for spring");
-        assertThat(findFirst("ul.collection").find("li")).hasSize(2);
+        searchResultPage.isAt();
+        assertThat(searchResultPage.getNumberOfResults()).isEqualTo(2);
     }
+
 }
