@@ -1,7 +1,6 @@
 package masterSpringMvc.controller;
 
 import masterSpringMvc.MasterSpringMvcApplication;
-import masterSpringMvc.profile.UserProfileSession;
 import masterSpringMvc.utils.SessionBuilder;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,9 +14,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import java.util.Arrays;
-
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 

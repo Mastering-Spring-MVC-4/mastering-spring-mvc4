@@ -11,7 +11,7 @@ buildscript {
     }
 }
 
-apply plugin: 'java'
+apply plugin: 'groovy'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot' 
@@ -65,6 +65,9 @@ dependencies {
     testCompile 'org.fluentlenium:fluentlenium-assertj:0.10.3'
     testCompile 'com.codeborne:phantomjsdriver:1.2.1'
     testCompile 'org.seleniumhq.selenium:selenium-java:2.45.0'
+
+    testCompile 'org.codehaus.groovy:groovy-all:2.4.4:indy'
+    testCompile 'org.spockframework:spock-spring'
 }
 
 eclipse {
